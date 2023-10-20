@@ -45,7 +45,7 @@ class IssueController extends Controller
         $issue->category_id = $request->category_id;
         $issue->priority_id = $request->priority_id;
         $issue->status_id = $request->status_id;
-        $issue->department_id = $request->department_id;
+        $issue->department_id = Auth::user()->usuario_departamento->id;
         $issue->save();
         return redirect()->route('issues.index');
     }

@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+        <div class="card">
+            <div class="card-header">Nuevo departamento</div>
+            <div class="card-body">
         <form class="mt-2" name="create_platform"
                 action="{{route('departments.store')}}" method="POST" enctype="multipart/form-data">
             @csrf
@@ -20,4 +23,6 @@
             <button type="submit" class="btn btn-primary" name="">Crear</button>
         </form>
     </div>
+</div>
+</div>
 @endsection

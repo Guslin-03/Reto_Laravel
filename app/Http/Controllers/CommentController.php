@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use App\Models\Issue;
 
 class CommentController extends Controller
 {
@@ -21,7 +22,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        //
+        return view('comments.create', ['issue' => $issue]);
     }
 
     /**
@@ -29,7 +30,12 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comment = new Comment();
+        $comment->text = $request->text;
+        $comment->minutesUsed = $request->minutesUsed;
+        $comment->issue_id = $request->issue_id;
+        $comment->save();
+        return redirect()->route('issues.index');
     }
 
     /**

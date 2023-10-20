@@ -31,6 +31,13 @@
     @endif
     @endforeach
 </div>
+@auth
+
+@include('comments.create', $issue)
+
+<a href="{{ route('comments.create', ['issue' => $issue]) }}" class="btn btn-primary">Crear</a>
+@endauth
 </div>
 @endauth
 @endsection
+

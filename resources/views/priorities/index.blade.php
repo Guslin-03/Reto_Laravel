@@ -32,5 +32,9 @@
                 </div>
             </div>
         @endforeach
+
     </div>
+    @auth
+    <a href="{{ route('priorities.create') }}" class="btn btn-primary">Crear</a>
+    @endauth
 @endsection

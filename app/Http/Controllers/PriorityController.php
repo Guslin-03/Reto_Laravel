@@ -14,7 +14,7 @@ class PriorityController extends Controller
     public function index()
     {
         $priorities = Priority::all();
-        $issues = Issue::orderBy('created_at', 'desc')->get(); 
+        $issues = Issue::orderBy('created_at', 'desc')->get();
         return view('priorities.index',['priorities' => $priorities],['issues' => $issues]);
     }
 
@@ -23,7 +23,7 @@ class PriorityController extends Controller
      */
     public function create()
     {
-        //
+        return view('priorities.create');
     }
 
     /**
@@ -31,7 +31,10 @@ class PriorityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $priority = new Priority();
+        $priority->name = $request->name;
+        $priority->save();
+        return redirect()->route('priorities.index');
     }
 
     /**

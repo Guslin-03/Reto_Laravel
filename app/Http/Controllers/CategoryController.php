@@ -14,7 +14,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::all();
-        $issues = Issue::orderBy('created_at', 'desc')->get(); 
+        $issues = Issue::orderBy('created_at', 'desc')->get();
         return view('categories.index',['categories' => $categories],['issues' => $issues]);
     }
 
@@ -23,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('categories.create');
     }
 
     /**
@@ -31,7 +31,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->name = $request->name;
+        $category->save();
+        return redirect()->route('categories.index');
     }
 
     /**

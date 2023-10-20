@@ -33,4 +33,7 @@
             </div>
         @endforeach
     </div>
+    @auth
+    <a href="{{ route('statuses.create') }}" class="btn btn-primary">Crear</a>
+    @endauth
 @endsection

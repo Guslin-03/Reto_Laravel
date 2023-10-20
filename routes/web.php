@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\IssueController;
 use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,7 @@ Route::resources([
     'categories'=> CategoryController::class,
     'priorities'=> PriorityController::class,
     'statuses'=> StatusController::class,
+    'comments'=> CommentController::class,
 ]);
 
 Route::middleware(['auth'])->group(function () {
@@ -42,7 +44,7 @@ Route::middleware(['auth'])->group(function () {
 Route::controller(DepartmentController::class)->group(function () {
     Route::get('/departments', 'index')->name('departments.index');
     Route::get('/departments/{department}', 'show')->name('departments.show');
-})->withoutMiddleware([Auth::class]);    
+})->withoutMiddleware([Auth::class]);
 
 Auth::routes();
 

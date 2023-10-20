@@ -14,7 +14,7 @@ class StatusController extends Controller
     public function index()
     {
         $statuses = Status::all();
-        $issues = Issue::orderBy('created_at', 'desc')->get(); 
+        $issues = Issue::orderBy('created_at', 'desc')->get();
         return view('statuses.index',['statuses' => $statuses], ['issues' => $issues]);
     }
 
@@ -23,7 +23,7 @@ class StatusController extends Controller
      */
     public function create()
     {
-        //
+        return view('statuses.create');
     }
 
     /**
@@ -31,7 +31,10 @@ class StatusController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $status = new Status();
+        $status->name = $request->name;
+        $status->save();
+        return redirect()->route('statuses.index');
     }
 
     /**
