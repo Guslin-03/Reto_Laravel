@@ -9,19 +9,21 @@
                 <p class="card-text">{{$department->description}}</p>
                 <p class="card-text">Creado el {{$department->created_at}}</p>
             </div>
-           
         </div>
     </div>
     <div class="container">
     <h1>Empleados del departamento</h1>
     @foreach ($department->departamento_usuarios as $usuario)
-    
+
     <div class="card">
             <div class="card-body">
                 <h1 class="card-title">{{$usuario->name}}</h1>
             </div>
             </div>
     @endforeach
+    @auth
     <a href="{{ route('departments.edit', ['department' => $department]) }}" class="btn btn-primary">Editar</a>
+    @endauth
+
     </div>
 @endsection

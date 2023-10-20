@@ -42,7 +42,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('categories.show',['category'=>$category]);
+
     }
 
     /**
@@ -50,7 +50,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        return view('categories.edit',['category'=>$category]);
     }
 
     /**
@@ -58,7 +58,11 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->name = $request->name;
+        $category->save();
+        $categories = Category::all();
+        $issues = Issue::orderBy('created_at', 'desc')->get();
+        return view('categories.index',['categories'=>$categories, 'issues'=>$issues]);
     }
 
     /**

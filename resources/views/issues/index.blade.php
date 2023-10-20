@@ -12,7 +12,6 @@
                 </h1>
                 <p class="card-text">Departamento: {{$issue->incidencia_departamento->name}}</p>
                 <p class="card-text">{{$issue->created_at}}</p>
-                <a href="{{ route('issues.show', ['issue' => $issue]) }}" class="btn btn-primary">Ver Detalles</a>
             </div>
         </div>
         @endforeach

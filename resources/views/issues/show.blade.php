@@ -11,6 +11,7 @@
             <p class="card-text">Departamento propietario: {{ $issue->incidencia_departamento->name }}</p>
             <p class="card-text">Usuario que reporta la incidencia: {{ $issue->incidencia_usuario->name }}</p>
             <p class="card-text">Creada el {{ $issue->created_at }}</p>
+            <a href="{{ route('issues.edit', ['issue' => $issue]) }}" class="btn btn-primary">Editar</a>
         </div>
     </div>
 
@@ -32,10 +33,7 @@
     @endforeach
 </div>
 @auth
-
 @include('comments.create', $issue)
-
-<a href="{{ route('comments.create', ['issue' => $issue]) }}" class="btn btn-primary">Crear</a>
 @endauth
 </div>
 @endauth

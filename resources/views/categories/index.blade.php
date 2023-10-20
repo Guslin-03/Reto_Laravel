@@ -24,13 +24,21 @@
                                         @if ($issueCount >= 5)
                                             @break
                                         @endif
+
                                     @endforeach
                                 </ul>
                             </div>
+                            @auth
+                            <a href="{{ route('categories.edit', ['category' => $category]) }}" class="btn btn-primary">Editar</a>
+                            @endauth
                         </div>
+
                     </div>
+
                 </div>
+
             </div>
+
         @endforeach
     </div>
     @auth

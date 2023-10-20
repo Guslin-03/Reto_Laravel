@@ -64,7 +64,11 @@ class IssueController extends Controller
      */
     public function edit(Issue $issue)
     {
-        //
+        $priorities = Priority::all();
+        $statuses = Status::all();
+        $categories = Category::all();
+
+        return view('issues.edit',['issue'=>$issue, 'priorities'=>$priorities, 'statuses'=>$statuses, 'categories'=>$categories]);
     }
 
     /**
@@ -72,7 +76,14 @@ class IssueController extends Controller
      */
     public function update(Request $request, Issue $issue)
     {
-        //
+
+        $comments = Comment::all();
+
+        $issue->title = $request->title;
+        $issue->text = $request->text;
+        $issue->estimated_time = $request->estimated_time;
+        $issue->save();
+        return view('issues.show',['issue'=>$issue, 'comments'=>$comments]);
     }
 
     /**

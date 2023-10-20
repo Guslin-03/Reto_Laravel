@@ -50,7 +50,7 @@ class StatusController extends Controller
      */
     public function edit(Status $status)
     {
-        //
+        return view('statuses.edit',['status'=>$status]);
     }
 
     /**
@@ -58,7 +58,11 @@ class StatusController extends Controller
      */
     public function update(Request $request, Status $status)
     {
-        //
+        $status->name = $request->name;
+        $status->save();
+        $statuses = Status::all();
+        $issues = Issue::orderBy('created_at', 'desc')->get();
+        return view('statuses.index',['statuses'=>$statuses, 'issues'=>$issues]);
     }
 
     /**
