@@ -1,0 +1,27 @@
+.container {
+    margin: 0 auto; /* Esto centrará el contenido */
+    max-width: 1200px; /* Establece el ancho máximo que desees */
+    padding: 10px; /* Agrega espacio de margen alrededor del contenido */
+}
+.nav-item {
+    transition: background-color .5s ease-in-out;
+}
+
+.nav-item {
+    background-color: white;
+    border-radius: 0.2rem;
+    color: black;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-bottom:0px solid white;
+
+}
+
+.nav-item{
+    font-size: 1rem;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 0rem;
+    margin: 0rem;
+    border-bottom:1px solid white;
+}
