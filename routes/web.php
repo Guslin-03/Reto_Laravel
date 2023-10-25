@@ -8,6 +8,7 @@ use App\Http\Controllers\IssueController;
 use App\Http\Controllers\PriorityController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\Auth\ChangePasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,5 +48,9 @@ Route::controller(DepartmentController::class)->group(function () {
 })->withoutMiddleware([Auth::class]);
 
 Auth::routes();
+
+Route::get('/change-password', [ChangePasswordController::class, 'edit'])->name('password.edit');
+Route::put('/change-password', [ChangePasswordController::class, 'update'])->name('password.update');
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

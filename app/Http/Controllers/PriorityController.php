@@ -23,7 +23,7 @@ class PriorityController extends Controller
      */
     public function create()
     {
-        return view('priorities.create');
+        return view('priorities.create_edit');
     }
 
     /**
@@ -50,7 +50,7 @@ class PriorityController extends Controller
      */
     public function edit(Priority $priority)
     {
-        //
+        return view('priorities.create_edit',['priority'=>$priority]);
     }
 
     /**
@@ -58,7 +58,11 @@ class PriorityController extends Controller
      */
     public function update(Request $request, Priority $priority)
     {
-        //
+        $priority->name = $request->name;
+        $priority->save();
+        $priorities = Priority::all();
+        $issues = Issue::orderBy('created_at', 'desc')->get();
+        return view('priorities.index',['priorities'=>$priorities, 'issues'=>$issues]);
     }
 
     /**

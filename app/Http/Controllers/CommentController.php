@@ -43,7 +43,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        return view('comments.show',['comment'=>$comment]);
+
     }
 
     /**
@@ -51,15 +51,22 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        //
+        return view('comments.edit',['comment'=>$comment]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Comment $comment, Issue $issue)
     {
-        //
+        $comments = Comment::all();
+
+        dd($issue->title);
+
+        $comment->text = $request->text;
+        $comment->minutesUsed = $request->minutesUsed;
+        $comment->save();
+        return view('issues.show',['comments'=>$comments, 'issue'=>$issue]);
     }
 
     /**

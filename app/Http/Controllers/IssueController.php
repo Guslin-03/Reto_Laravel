@@ -76,7 +76,6 @@ class IssueController extends Controller
      */
     public function update(Request $request, Issue $issue)
     {
-
         $comments = Comment::all();
 
         $issue->title = $request->title;
@@ -91,6 +90,8 @@ class IssueController extends Controller
      */
     public function destroy(Issue $issue)
     {
-        //
+        $issue->delete();
+        $issues = Issue::all();
+        return view('issues.index', ['issues'=>$issues]);
     }
 }

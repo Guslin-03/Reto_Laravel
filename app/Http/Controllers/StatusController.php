@@ -23,7 +23,7 @@ class StatusController extends Controller
      */
     public function create()
     {
-        return view('statuses.create');
+        return view('statuses.create_edit');
     }
 
     /**
@@ -50,7 +50,7 @@ class StatusController extends Controller
      */
     public function edit(Status $status)
     {
-        return view('statuses.edit',['status'=>$status]);
+        return view('statuses.create_edit',['status'=>$status]);
     }
 
     /**

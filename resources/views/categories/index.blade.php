@@ -29,7 +29,12 @@
                                 </ul>
                             </div>
                             @auth
-                            <a href="{{ route('categories.edit', ['category' => $category]) }}" class="btn btn-primary">Editar</a>
+                            <form action="{{route('categories.destroy',$category)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-primary btn-danger" type="submit">Delete</button>
+                                <a href="{{ route('categories.edit', ['category' => $category]) }}" class="btn btn-primary">Editar</a>
+                            </form>
                             @endauth
                         </div>
 

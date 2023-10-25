@@ -13,10 +13,10 @@ class DepartmentController extends Controller
     */
     public function index(){
         $departments = Department::all();
-        $issues = Issue::orderBy('created_at', 'desc')->get(); 
+        $issues = Issue::orderBy('created_at', 'desc')->get();
         return view('departments.index',['departments' => $departments],['issues' => $issues]);
     }
-    
+
     /**
     * Show the form for creating a new resource.
     */
@@ -24,7 +24,7 @@ class DepartmentController extends Controller
     {
         return view('departments.create');
     }
-    
+
     /**
     * Store a newly created resource in storage.
     */
@@ -36,9 +36,9 @@ class DepartmentController extends Controller
         $department->description = $request->description;
         $department->save();
         return redirect()->route('departments.index');
-        
+
     }
-    
+
     /**
     * Display the specified resource.
     */
@@ -46,7 +46,7 @@ class DepartmentController extends Controller
     {
         return view('departments.show',['department'=>$department]);
     }
-    
+
     /**
     * Show the form for editing the specified resource.
     */
@@ -54,7 +54,7 @@ class DepartmentController extends Controller
     {
         return view('departments.edit',['department'=>$department]);
     }
-    
+
     /**
     * Update the specified resource in storage.
     */
@@ -66,12 +66,14 @@ class DepartmentController extends Controller
         $department->save();
         return view('departments.show',['department'=>$department]);
     }
-    
+
     /**
     * Remove the specified resource from storage.
     */
     public function destroy(Department $department)
     {
-        //
+        $department->delete();
+        $departments = Department::all();
+        return view('departments.index', ['departments'=>$departments]);
     }
 }

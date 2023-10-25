@@ -23,7 +23,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('categories.create');
+        return view('categories.create_edit');
     }
 
     /**
@@ -50,7 +50,7 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('categories.edit',['category'=>$category]);
+        return view('categories.create_edit',['category'=>$category]);
     }
 
     /**
@@ -70,6 +70,16 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+
+        foreach ($category->categoria_incidencias() as $issue) {
+            $issue->title = null;
+            $issue->update();
+        }
+
+        $category->name = "eliminado";
+        $category->update();
+        $categories = Category::all();
+        $issues = Issue::all();
+        return view('categories.index', ['categories'=>$categories, 'issues'=>$issues]);
     }
 }

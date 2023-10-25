@@ -12,6 +12,14 @@
                 </h1>
                 <p class="card-text">Departamento: {{$issue->incidencia_departamento->name}}</p>
                 <p class="card-text">{{$issue->created_at}}</p>
+
+                <form action="{{route('issues.destroy',$issue)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-sm btn-danger" type="submit">Delete
+                    </button>
+                </form>
+
             </div>
         </div>
         @endforeach

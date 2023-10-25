@@ -33,6 +33,15 @@
                                 </ul>
                             </div>
                         </div>
+                        @auth
+                        @if (($issueCount == 0 && $department->departamento_usuarios->isEmpty()))
+                        <form action="{{route('departments.destroy',$department)}}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                        </form>
+                        @endif
+                        @endauth
                     </div>
                 </div>
             </div>

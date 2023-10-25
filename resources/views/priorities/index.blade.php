@@ -27,6 +27,9 @@
                                     @endforeach
                                 </ul>
                             </div>
+                            @auth
+                            <a href="{{ route('priorities.edit', ['priority' => $priority]) }}" class="btn btn-primary">Editar</a>
+                            @endauth
                         </div>
                     </div>
                 </div>

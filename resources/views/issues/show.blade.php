@@ -12,30 +12,27 @@
             <p class="card-text">Usuario que reporta la incidencia: {{ $issue->incidencia_usuario->name }}</p>
             <p class="card-text">Creada el {{ $issue->created_at }}</p>
             <a href="{{ route('issues.edit', ['issue' => $issue]) }}" class="btn btn-primary">Editar</a>
+
         </div>
     </div>
+    <div class="container">
 
+        <div class="card">
+            <div class="card-header">Comentarios Recientes </div>
+            @foreach ($comments as $comment)
+            @if ($issue->id == $comment->issue_id)
+                @include('comments.edit', [$comment, $issue])
+            @endif
+            @endforeach
+        </div>
+
+    </div>
 </div>
 
 @auth
 <div class="container">
-    <div class="card">
-        <div class="card-header">Comentarios Recientes </div>
-    @foreach ($comments as $comment)
-    @if ($issue->id == $comment->issue_id)
-    <div class="card mb-3">
-        <div class="card-body">
-            <p class="card-text">{{ $comment->text }}</p>
-            <p class="card-text">{{ $comment->minutesUsed }} minutos empleados en solucionar la incidencia</p>
-        </div>
-    </div>
-    @endif
-    @endforeach
-</div>
-@auth
-@include('comments.create', $issue)
-@endauth
+
+    @include('comments.create', $issue)
 </div>
 @endauth
 @endsection
-

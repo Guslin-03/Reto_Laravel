@@ -17,8 +17,7 @@
             </div>
             <div class="form-group mb-3">
                 <label for="sede" class="form-label">Descripción</label>
-                <textarea type="textarea" rows="5" class="form-control" id="description" name="description">
-                </textarea>
+                <textarea type="textarea" rows="5" class="form-control" id="description" name="description"></textarea>
             </div>
             <button type="submit" class="btn btn-primary" name="">Crear</button>
         </form>
