@@ -1,38 +1,41 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="card">
-        <div class="card-header">Incidencia </div>
-        <div class="card-body">
-            <h1 class="card-title">{{ $issue->title }}</h1>
-            <p class="card-text">Descripción: {{ $issue->text }}</p>
-            <p class="card-text">{{ $issue->estimated_time }} minutos</p>
-            <p class="card-text">Departamento propietario: {{ $issue->incidencia_departamento->name }}</p>
-            <p class="card-text">Usuario que reporta la incidencia: {{ $issue->incidencia_usuario->name }}</p>
-            <p class="card-text">Creada el {{ $issue->created_at }}</p>
-            <a href="{{ route('issues.edit', ['issue' => $issue]) }}" class="btn btn-primary">Editar</a>
-
-        </div>
+        <div class="card-header">Incidencia</div>
+            <div class="card-body">
+                <h1 class="card-title">{{ $issue->title }}</h1>
+                <p class="card-text">Descripción: {{ $issue->text }}</p>
+                <p class="card-text">{{ $issue->estimated_time }} minutos</p>
+                <p class="card-text">Departamento propietario: {{ $issue->incidencia_departamento->name }}</p>
+                <p class="card-text">Usuario que reporta la incidencia: {{ $issue->incidencia_usuario->name }}</p>
+                <p class="card-text">Categoría: {{ $issue->incidencia_categoria->name ?? 'Eliminado'}}</p>
+                <p class="card-text">Prioridad: {{ $issue->incidencia_prioridad->name ?? 'Eliminado'}}</p>
+                <p class="card-text">Estado: {{ $issue->incidencia_estado->name ?? 'Eliminado' }}</p>
+                <p class="card-text">Creada el {{ $issue->created_at }}</p>
+            </div>
     </div>
     <div class="container">
-
-        <div class="card">
-            <div class="card-header">Comentarios Recientes </div>
-            @foreach ($comments as $comment)
-            @if ($issue->id == $comment->issue_id)
-                @include('comments.edit', [$comment, $issue])
+        @auth
+            @if($issue->department_id == Auth::user()->department_id)
+                @foreach ($comments as $comment)
+                    @if ($issue->id == $comment->issue_id && $comment != null)
+                        @include('comments.create_edit', ['comment'=>$comment])
+                    @else
+                        @php
+                           $comment1 = "comment"
+                        @endphp
+                        @include('comments.create_edit', ['comment1'=>$comment1])
+                    @endif
+                @endforeach
             @endif
-            @endforeach
-        </div>
-
-    </div>
+        @endauth
 </div>
-
 @auth
-<div class="container">
-
-    @include('comments.create', $issue)
-</div>
+    @if($issue->department_id == Auth::user()->department_id)
+        <div class="container">
+            @include('comments.create_edit', ['comment'=>null])
+        </div>
+    @endif
 @endauth
 @endsection

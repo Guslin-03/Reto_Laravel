@@ -28,14 +28,18 @@
                                 </ul>
                             </div>
                             @auth
+                            <form action="{{route('priorities.destroy',$priority)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" type="submit">Eliminar</button>
                             <a href="{{ route('priorities.edit', ['priority' => $priority]) }}" class="btn btn-primary">Editar</a>
+                            </form>
                             @endauth
                         </div>
                     </div>
                 </div>
             </div>
         @endforeach
-
     </div>
     @auth
     <a href="{{ route('priorities.create') }}" class="btn btn-primary">Crear</a>

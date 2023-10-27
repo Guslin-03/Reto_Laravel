@@ -21,9 +21,5 @@
             </div>
             </div>
     @endforeach
-    @auth
-    <a href="{{ route('departments.edit', ['department' => $department]) }}" class="btn btn-primary">Editar</a>
-    @endauth
-
     </div>
 @endsection

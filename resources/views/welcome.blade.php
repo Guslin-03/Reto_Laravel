@@ -8,7 +8,7 @@
                 <div class="card-header">¡Bienvenid@ a Ibermaniáticos</div>
 
                 <div class="card-body text-center">
-                    <img src="{{ asset('img/logoIber-bg.png') }}" class="mx-auto" />
+                    <img src="{{ asset('img/logoIber-bg.png') }}" class="mx-auto img-fluid" />
                 </div>
             </div>
         </div>

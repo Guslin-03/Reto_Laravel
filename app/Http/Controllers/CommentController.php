@@ -22,7 +22,7 @@ class CommentController extends Controller
      */
     public function create()
     {
-        return view('comments.create', ['issue' => $issue]);
+        return view('comments.create_edit', ['issue' => $issue]);
     }
 
     /**
@@ -30,12 +30,14 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
+        $issue = Issue::find($request->issue_id);
         $comment = new Comment();
         $comment->text = $request->text;
         $comment->minutesUsed = $request->minutesUsed;
-        $comment->issue_id = $request->issue_id;
+        $comment->issue_id = $issue->id;
         $comment->save();
-        return redirect()->route('issues.index');
+
+        return redirect()->route('issues.show',['issue'=>$issue]);
     }
 
     /**
@@ -51,21 +53,20 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        return view('comments.edit',['comment'=>$comment]);
+        return view('comments.create_edit',['comment'=>$comment]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Comment $comment, Issue $issue)
+    public function update(Request $request, Comment $comment)
     {
-        $comments = Comment::all();
-
-        dd($issue->title);
+        $issue = $comment->comentario_incidencia;
 
         $comment->text = $request->text;
         $comment->minutesUsed = $request->minutesUsed;
         $comment->save();
+        $comments = Comment::all();
         return view('issues.show',['comments'=>$comments, 'issue'=>$issue]);
     }
 
@@ -74,6 +75,9 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $issue = $comment->comentario_incidencia;
+        $comment->delete();
+        $comments = Comment::all();
+        return view('issues.show', ['comments'=>$comments, 'issue'=>$issue]);
     }
 }

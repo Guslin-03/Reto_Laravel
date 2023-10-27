@@ -17,9 +17,7 @@
             </div>
             <div class="form-group mb-3">
                 <label for="description" class="form-label">Descripción</label>
-                <textarea type="textarea" rows="7" class="form-control" id="description" name="description" required>
-                    {{$department->description}}
-                </textarea>
+                <textarea type="textarea" rows="7" class="form-control" id="description" name="description" required>{{$department->description}}</textarea>
             </div>
             <button type="submit" class="btn btn-primary" name="">Actualizar</button>
         </form>

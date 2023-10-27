@@ -17,17 +17,19 @@ return new class extends Migration
             $table->string('text');
             $table->integer('estimated_time');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('priority_id');
-            $table->unsignedBigInteger('status_id');
+            $table->unsignedBigInteger('category_id')->nullable();
+            $table->unsignedBigInteger('priority_id')->nullable();
+            $table->unsignedBigInteger('status_id')->nullable();
             $table->unsignedBigInteger('department_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('priority_id')->references('id')->on('priorities');
-            $table->foreign('status_id')->references('id')->on('statuses');
+            $table->foreign('category_id')->references('id')->on('categories')->nullable()->constrained()->onDelete('set null');
+            $table->foreign('priority_id')->references('id')->on('priorities')->nullable()->constrained()->onDelete('set null');
+            $table->foreign('status_id')->references('id')->on('statuses')->nullable()->constrained()->onDelete('set null');
             $table->foreign('department_id')->references('id')->on('departments');
+
+
         });
     }
 

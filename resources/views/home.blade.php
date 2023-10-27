@@ -9,7 +9,7 @@
                         <div class="card-body">
                         <h5 class="card-title">Tus últimas incidencias</h5>
                             @foreach ($issues as $issue)
-                                @if($issue->id == Auth::user()->id)
+                                @if($issue->user_id == Auth::user()->id)
                                     <p class="card-title">{{ $issue->title }}</p>
                                 @endif
                             @endforeach

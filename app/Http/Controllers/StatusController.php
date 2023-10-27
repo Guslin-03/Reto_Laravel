@@ -70,6 +70,9 @@ class StatusController extends Controller
      */
     public function destroy(Status $status)
     {
-        //
+        $status->delete();
+        $statuses = Status::all();
+        $issues = Issue::all();
+        return view('statuses.index', ['statuses'=>$statuses, 'issues'=>$issues]);
     }
 }

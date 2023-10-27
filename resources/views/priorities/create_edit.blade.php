@@ -11,14 +11,14 @@
             </div>
             <div class="card-body">
                 <form class="mt-2" name="priority_form"
-                      @if(isset($category))
+                      @if(isset($priority))
                       action="{{ route('priorities.update', $priority) }}"
                       @else
                       action="{{ route('priorities.store') }}"
                       @endif
                       method="POST" enctype="multipart/form-data">
                     @csrf
-                    @if(isset($category))
+                    @if(isset($priority))
                         @method('PUT')
                     @endif
                     <div class="form-group mb-3">

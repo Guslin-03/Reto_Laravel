@@ -9,6 +9,7 @@ use App\Models\Comment;
 use App\Models\Priority;
 use App\Models\Status;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class IssueController extends Controller
 {
@@ -17,7 +18,12 @@ class IssueController extends Controller
      */
     public function index()
     {
-        $issues = Issue::orderBy('created_at', 'desc')->get();
+
+        $issues = Issue::join('priorities', 'issues.priority_id', '=', 'priorities.id')
+        ->select('issues.*')
+        ->orderBy('priorities.priority', 'desc') // Ordenar por un campo de la tabla priorities
+        ->get();
+
         return view('issues.index',['issues' => $issues]);
     }
 
@@ -29,7 +35,7 @@ class IssueController extends Controller
         $categories = Category::all();
         $priorities = Priority::all();
         $statuses = Status::all();
-        return view('issues.create',['categories' => $categories, 'statuses' => $statuses, 'priorities' => $priorities]);
+        return view('issues.create_edit',['categories' => $categories, 'statuses' => $statuses, 'priorities' => $priorities]);
     }
 
     /**
@@ -68,7 +74,7 @@ class IssueController extends Controller
         $statuses = Status::all();
         $categories = Category::all();
 
-        return view('issues.edit',['issue'=>$issue, 'priorities'=>$priorities, 'statuses'=>$statuses, 'categories'=>$categories]);
+        return view('issues.create_edit',['issue'=>$issue, 'priorities'=>$priorities, 'statuses'=>$statuses, 'categories'=>$categories]);
     }
 
     /**

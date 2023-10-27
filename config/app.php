@@ -183,6 +183,9 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'Example' => App\Facades\Example::class,
+        'InfoCard' => App\View\Components\InfoCard::class,
     ])->toArray(),
+
+    
 
 ];

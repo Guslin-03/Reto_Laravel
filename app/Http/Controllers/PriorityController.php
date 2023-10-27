@@ -70,6 +70,9 @@ class PriorityController extends Controller
      */
     public function destroy(Priority $priority)
     {
-        //
+        $priority->delete();
+        $priorities = Priority::all();
+        $issues = Issue::all();
+        return view('priorities.index', ['priorities'=>$priorities, 'issues'=>$issues]);
     }
 }

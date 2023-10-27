@@ -28,7 +28,12 @@
                                 </ul>
                             </div>
                             @auth
+                            <form action="{{route('statuses.destroy',$status)}}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" type="submit">Eliminar</button>
                             <a href="{{ route('statuses.edit', ['status' => $status]) }}" class="btn btn-primary">Editar</a>
+                            </form>
                             @endauth
                         </div>
                     </div>

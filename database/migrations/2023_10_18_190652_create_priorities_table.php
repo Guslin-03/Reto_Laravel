@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('priorities', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
+            $table->integer('priority')->check('priority >= 1 and priority <= 5');
             $table->timestamps();
+
         });
     }
 

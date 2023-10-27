@@ -9,7 +9,9 @@
 
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-    
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -27,22 +29,22 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item" id="tab-departments @if(Request::is('departments*')) active @endif">
+                        <li class="nav-item @if(Request::is('departments*')) active @endif">
                             <a class="nav-link" href="{{ route('departments.index') }}">Departamentos</a>
                         </li>
-                        <li class="nav-item" id="tab-users @if(Request::is('users*')) active @endif">
+                        <li class="nav-item @if(Request::is('users*')) active @endif">
                             <a class="nav-link" href="{{ route('users.index') }}">Usuarios</a>
                         </li>
-                        <li class="nav-item" id="tab-users @if(Request::is('issues*')) active @endif">
+                        <li class="nav-item @if(Request::is('issues*')) active @endif">
                             <a class="nav-link" href="{{ route('issues.index') }}">Incidencias</a>
                         </li>
-                        <li class="nav-item" id="tab-users @if(Request::is('categories*')) active @endif">
+                        <li class="nav-item @if(Request::is('categories*')) active @endif">
                             <a class="nav-link" href="{{ route('categories.index') }}">Categorías</a>
                         </li>
-                        <li class="nav-item" id="tab-users @if(Request::is('priorities*')) active @endif">
+                        <li class="nav-item @if(Request::is('priorities*')) active @endif">
                             <a class="nav-link" href="{{ route('priorities.index') }}">Prioridades</a>
                         </li>
-                        <li class="nav-item" id="tab-users @if(Request::is('statuses*')) active @endif">
+                        <li class="nav-item @if(Request::is('statuses*')) active @endif">
                             <a class="nav-link" href="{{ route('statuses.index') }}">Estados</a>
                         </li>
                     </ul>

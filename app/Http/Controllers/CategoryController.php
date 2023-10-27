@@ -70,14 +70,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-
-        foreach ($category->categoria_incidencias() as $issue) {
-            $issue->title = null;
-            $issue->update();
-        }
-
-        $category->name = "eliminado";
-        $category->update();
+        $category->delete();
         $categories = Category::all();
         $issues = Issue::all();
         return view('categories.index', ['categories'=>$categories, 'issues'=>$issues]);

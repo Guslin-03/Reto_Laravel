@@ -32,18 +32,14 @@
                             <form action="{{route('categories.destroy',$category)}}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-primary btn-danger" type="submit">Delete</button>
+                                <button class="btn btn-danger" type="submit">Eliminar</button>
                                 <a href="{{ route('categories.edit', ['category' => $category]) }}" class="btn btn-primary">Editar</a>
                             </form>
                             @endauth
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-
         @endforeach
     </div>
     @auth

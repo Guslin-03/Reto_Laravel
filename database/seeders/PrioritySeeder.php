@@ -16,9 +16,9 @@ class PrioritySeeder extends Seeder
     public function run()
     {
         $priorities=[
-         ["name"=>"Alta"],  
-         ["name"=>"Media"],
-         ["name"=>"Baja"]
+         ["name"=>"Alta","priority"=>5],
+         ["name"=>"Media","priority"=>3],
+         ["name"=>"Baja","priority"=>1]
         ];
         foreach ($priorities as $priority) {
             $this->attemptInsertion($priority);
@@ -32,9 +32,9 @@ class PrioritySeeder extends Seeder
      **/
     private function attemptInsertion(array $priority):void
     {
-       
+
         DB::table('priorities')->insert($priority);
-       
+
     }
-        
+
     }

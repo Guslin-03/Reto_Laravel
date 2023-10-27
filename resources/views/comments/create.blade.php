@@ -3,7 +3,7 @@
         <div class="card-header">Nuevo comentario</div>
             <div class="card-body">
                 <form class="mt-2" name="create_platform"
-                action="{{route('comments.store',$issue)}}" method="POST" enctype="multipart/form-data">
+                action="{{route('comments.store')}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group mb-3">
                     <label for="text" class="form-label">Descripción</label>

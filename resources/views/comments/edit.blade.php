@@ -13,7 +13,11 @@
         <input type="text" class="form-control" id="minutesUsed" name="minutesUsed" required
         value="{{$comment->minutesUsed}}"/>
     </div>
-    <button type="submit" class="btn btn-primary" name="">Actualizar</button>
+    @auth
+        @if($issue->user_id == Auth::user()->id)
+            <button type="submit" class="btn btn-primary" name="">Actualizar</button>
+        @endif
+    @endauth
 </form>
 </div>
 

@@ -32,13 +32,16 @@
                                     @endforeach
                                 </ul>
                             </div>
+                            @auth
+                            <a href="{{ route('departments.edit', ['department' => $department]) }}" class="btn btn-primary">Editar</a>
+                            @endauth
                         </div>
                         @auth
                         @if (($issueCount == 0 && $department->departamento_usuarios->isEmpty()))
                         <form action="{{route('departments.destroy',$department)}}" method="POST">
                             @csrf
                             @method('DELETE')
-                            <button class="btn btn-sm btn-danger" type="submit">Delete</button>
+                            <button class="btn btn-danger" type="submit">Eliminar</button>
                         </form>
                         @endif
                         @endauth

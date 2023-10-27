@@ -22,7 +22,7 @@ class DepartmentController extends Controller
     */
     public function create()
     {
-        return view('departments.create');
+        return view('departments.create_edit');
     }
 
     /**
@@ -52,7 +52,7 @@ class DepartmentController extends Controller
     */
     public function edit(Department $department)
     {
-        return view('departments.edit',['department'=>$department]);
+        return view('departments.create_edit',['department'=>$department]);
     }
 
     /**
