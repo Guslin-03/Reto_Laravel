@@ -13,4 +13,9 @@ class Department extends Model
     public function departamento_usuarios(): HasMany {
         return $this->hasMany(User::class);
     }
+
+    public function ultimas_issues(): HasMany {
+        return $this->hasMany(Issue::class, 'department_id')->latest()->take(5);
+    }
+
 }

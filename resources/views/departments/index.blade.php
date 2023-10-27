@@ -1,56 +1,43 @@
 @extends('layouts.app')
-
 @section('content')
+<div class="container">
     <div class="row">
-        @foreach ($departments as $department)
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="{{ route('departments.show', ['department' => $department->id]) }}">
-                                {{ $department->name }}
-                            </a>
-                            </h5>
-                        <p class="card-text">Localizado en {{ $department->headquarters }}</p>
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">Últimas incidencias:</h6>
-                                <ul class="list-group">
-                                    @php $issueCount = 0 @endphp
-                                    @foreach ($issues as $issue)
-                                        @if ($issue->department_id == $department->id)
-                                        <li class="list-group-item">
-                                            <a href="{{ route('issues.show', ['issue' => $issue->id]) }}">
-                                                {{ $issue->title }}
-                                            </a>
-                                        </li>
-                                            @php $issueCount++ @endphp
-                                        @endif
-                                        @if ($issueCount >= 5)
-                                            @break
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @auth
-                            <a href="{{ route('departments.edit', ['department' => $department]) }}" class="btn btn-primary">Editar</a>
-                            @endauth
-                        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">Lista de departamentos</h4>
                         @auth
-                        @if (($issueCount == 0 && $department->departamento_usuarios->isEmpty()))
-                        <form action="{{route('departments.destroy',$department)}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button class="btn btn-danger" type="submit">Eliminar</button>
-                        </form>
-                        @endif
+                        <a href="{{ route('departments.create') }}" class="btn btn-success">Crear</a>
                         @endauth
                     </div>
                 </div>
+                <div class="card-body">
+                    @foreach ($departments as $department)
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">{{ $department->name }}</h5>
+                                @auth
+                                    @if (($department->departamento_usuarios->isEmpty()))
+                                        <form action="{{route('departments.destroy',$department)}}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger" type="submit">Eliminar</button>
+                                            <a href="{{ route('departments.edit', ['department' => $department]) }}" class="btn btn-primary">Editar</a>
+                                        </form>
+                                    @else
+                                    <a href="{{ route('departments.edit', ['department' => $department]) }}" class="btn btn-primary">Editar</a>
+                                    @endif
+                                @endauth
+                            </div>
+                        </div>
+                        @include('issues.issue', ['department'=>$department,'issues'=>$department->ultimas_issues])
+                    </div>
+                    @endforeach
+                </div>
             </div>
-        @endforeach
+        </div>
     </div>
-    @auth
-    <a href="{{ route('departments.create') }}" class="btn btn-primary">Crear</a>
-    @endauth
+</div>
 @endsection

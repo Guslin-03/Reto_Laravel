@@ -1,47 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <div class="row">
-        @foreach ($statuses as $status)
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $status->name }}</h5>
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">Últimas incidencias con este estado:</h6>
-                                <ul class="list-group">
-                                    @php $issueCount = 0 @endphp
-                                    @foreach ($issues as $issue)
-                                        @if ($issue->status_id == $status->id)
-                                        <li class="list-group-item">
-                                            <a href="{{ route('issues.show', ['issue' => $issue->id]) }}">
-                                                {{ $issue->title }}
-                                            </a>
-                                        </li>
-                                            @php $issueCount++ @endphp
-                                        @endif
-                                        @if ($issueCount >= 5)
-                                            @break
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @auth
-                            <form action="{{route('statuses.destroy',$status)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger" type="submit">Eliminar</button>
-                            <a href="{{ route('statuses.edit', ['status' => $status]) }}" class="btn btn-primary">Editar</a>
-                            </form>
-                            @endauth
-                        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">Lista de estados</h4>
+                        @auth
+                        <a href="{{ route('statuses.create') }}" class="btn btn-success">Crear</a>
+                        @endauth
                     </div>
                 </div>
+                <div class="card-body">
+                    @foreach ($statuses as $status)
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">{{ $status->name }}</h5>
+                                @auth
+                                <form action="{{ route('statuses.destroy', $status) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" type="submit">Eliminar</button>
+                                <a href="{{ route('statuses.edit', ['status' => $status]) }}" class="btn btn-primary">Editar</a>
+                                </form>
+                                @endauth
+                            </div>
+                        </div>
+                        @include('issues.issue', ['status'=>$status,'issues'=>$status->ultimas_issues])
+                    </div>
+                    @endforeach
+                </div>
             </div>
-        @endforeach
+        </div>
     </div>
-    @auth
-    <a href="{{ route('statuses.create') }}" class="btn btn-primary">Crear</a>
-    @endauth
+</div>
 @endsection

@@ -14,7 +14,7 @@ class PriorityController extends Controller
     public function index()
     {
         $priorities = Priority::all();
-        $issues = Issue::orderBy('created_at', 'desc')->get();
+        $issues = Issue::orderBy('created_at', 'desc')->take(5)->get();
         return view('priorities.index',['priorities' => $priorities],['issues' => $issues]);
     }
 

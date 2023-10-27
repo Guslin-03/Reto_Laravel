@@ -5,3 +5,6 @@
     color: black;
     text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.5);
 }
+.card:nth-child(4n+1) {
+    margin-top: 10px;
+}

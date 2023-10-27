@@ -1,47 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="container">
     <div class="row">
-        @foreach ($priorities as $priority)
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $priority->name }}</h5>
-                        <div class="card">
-                            <div class="card-body">
-                                <h6 class="card-title">Últimas incidencias con esta prioridad:</h6>
-                                <ul class="list-group">
-                                    @php $issueCount = 0 @endphp
-                                    @foreach ($issues as $issue)
-                                        @if ($issue->priority_id == $priority->id)
-                                        <li class="list-group-item">
-                                            <a href="{{ route('issues.show', ['issue' => $issue->id]) }}">
-                                                {{ $issue->title }}
-                                            </a>
-                                        </li>
-                                            @php $issueCount++ @endphp
-                                        @endif
-                                        @if ($issueCount >= 5)
-                                            @break
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            </div>
-                            @auth
-                            <form action="{{route('priorities.destroy',$priority)}}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger" type="submit">Eliminar</button>
-                            <a href="{{ route('priorities.edit', ['priority' => $priority]) }}" class="btn btn-primary">Editar</a>
-                            </form>
-                            @endauth
-                        </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">Lista de prioridades</h4>
+                        @auth
+                        <a href="{{ route('priorities.create') }}" class="btn btn-success">Crear</a>
+                        @endauth
                     </div>
                 </div>
+                <div class="card-body">
+                    @foreach ($priorities as $priority)
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">{{ $priority->name }}</h5>
+                                @auth
+                                <form action="{{ route('priorities.destroy', $priority) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" type="submit">Eliminar</button>
+                                <a href="{{ route('priorities.edit', ['priority' => $priority]) }}" class="btn btn-primary">Editar</a>
+                                </form>
+                                @endauth
+                            </div>
+                        </div>
+                        @include('issues.issue', ['priority'=>$priority,'issues'=>$priority->ultimas_issues])
+                    </div>
+                    @endforeach
+                </div>
             </div>
-        @endforeach
+        </div>
     </div>
-    @auth
-    <a href="{{ route('priorities.create') }}" class="btn btn-primary">Crear</a>
-    @endauth
+</div>
 @endsection

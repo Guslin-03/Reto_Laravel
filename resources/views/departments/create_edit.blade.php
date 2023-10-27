@@ -33,8 +33,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="description" class="form-label">Descripción</label>
-                        <input type="text" class="form-control" id="description" name="description" required
-                               value="{{ isset($department) ? $department->description : '' }}"/>
+                        <textarea rows="7" class="form-control" id="description" name="description" required>{{ isset($department) ? $department->description : '' }}</textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">
                         @if(isset($department))

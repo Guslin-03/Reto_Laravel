@@ -1,22 +1,35 @@
 @extends('layouts.app')
-
 @section('content')
+<div class="container">
     <div class="row">
-        @foreach ($users as $user)
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="{{ route('users.show', ['user' => $user->id]) }}">
-                                {{ $user->name }}
-                            </a>
-                        </h5>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h4 class="mb-0">Lista de usuarios</h4>
+                        @auth
+                        <a href="{{ route('users.create') }}" class="btn btn-success">Crear</a>
+                        @endauth
                     </div>
-                    @auth
-                    <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn btn-primary">Editar</a>
-                    @endauth
+                </div>
+                <div class="card-body">
+                    @foreach ($users as $user)
+                    <div class="card mb-3">
+                        <div class="card-body d-flex justify-content-between align-items-center">
+                            <h5 class="card-title">
+                                <a href="{{ route('users.show', ['user' => $user->id]) }}">
+                                    {{ $user->name }}
+                                </a>
+                            </h5>
+                            @auth
+                            <a href="{{ route('users.edit', ['user' => $user]) }}" class="btn btn-primary">Editar</a>
+                            @endauth
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
             </div>
-        @endforeach
+        </div>
     </div>
+</div>
 @endsection

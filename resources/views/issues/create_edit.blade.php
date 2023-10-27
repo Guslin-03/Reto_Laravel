@@ -28,8 +28,7 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="text" class="form-label">Descripción</label>
-                        <textarea type="textarea" rows="5" class="form-control" id="text" name="text">{{ isset($issue) ? $issue->text : '' }}
-                        </textarea>
+                        <textarea type="textarea" rows="5" class="form-control" id="text" name="text">{{ isset($issue) ? $issue->text : '' }}</textarea>
                     </div>
                     <div class="form-group mb-3">
                         <label for="estimated_time" class="form-label">Tiempo Estimado</label>

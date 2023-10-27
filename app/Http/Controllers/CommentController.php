@@ -67,7 +67,7 @@ class CommentController extends Controller
         $comment->minutesUsed = $request->minutesUsed;
         $comment->save();
         $comments = Comment::all();
-        return view('issues.show',['comments'=>$comments, 'issue'=>$issue]);
+        return view('issues.show',['issue'=>$issue]);
     }
 
     /**

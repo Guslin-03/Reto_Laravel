@@ -19,7 +19,6 @@
                 @if(isset($comment))
                     @method('PUT')
                 @endif
-                @if ($issue->user_id == Auth::user()->id)
                     <div class="form-group mb-3">
                         <label for="description" class="form-label">Descripción</label>
                         <input type="text" class="form-control" id="text" name="text" required
@@ -34,12 +33,10 @@
                     <button type="submit" class="btn btn-primary">
                         @if(isset($comment))
                             Editar
-
                         @else
                             Crear
                         @endif
                     </button>
-                @endif
             </form>
             @if(isset($comment))
                 <form action="{{route('comments.destroy',$comment)}}" method="POST">

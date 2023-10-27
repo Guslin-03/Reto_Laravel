@@ -14,7 +14,7 @@ class StatusController extends Controller
     public function index()
     {
         $statuses = Status::all();
-        $issues = Issue::orderBy('created_at', 'desc')->get();
+        $issues = Issue::orderBy('created_at', 'desc')->take(5)->get();
         return view('statuses.index',['statuses' => $statuses], ['issues' => $issues]);
     }
 

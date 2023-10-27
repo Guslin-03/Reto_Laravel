@@ -12,5 +12,9 @@ class Category extends Model
 
     public function categoria_incidencias(): HasMany {
         return $this->hasMany(Issue::class);
-        }
+    }
+
+    public function ultimas_issues(): HasMany {
+        return $this->hasMany(Issue::class, 'category_id')->latest()->take(5);
+    }
 }

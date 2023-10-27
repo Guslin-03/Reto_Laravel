@@ -18,14 +18,9 @@
     <div class="container">
         @auth
             @if($issue->department_id == Auth::user()->department_id)
-                @foreach ($comments as $comment)
-                    @if ($issue->id == $comment->issue_id && $comment != null)
+                @foreach ($issue->incidencia_comentarios as $comment)
+                    @if ($issue->id == $comment->issue_id)
                         @include('comments.create_edit', ['comment'=>$comment])
-                    @else
-                        @php
-                           $comment1 = "comment"
-                        @endphp
-                        @include('comments.create_edit', ['comment1'=>$comment1])
                     @endif
                 @endforeach
             @endif
