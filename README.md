@@ -7,19 +7,17 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+Este proyecto forma parte del reto referente a las asignaturas de SISTEMAS DE GESTION EMPRESARIAL(SGE) y DESARROLLO DE INTERFACES(DI), en el cual creamos mediante el framework de Laravel una página de gestión de incidencias. Además se hace uso de una BBDD MySQL con la cual contamos para la gestión de los datos referentes a la página. Ambas estructuras estan construidas sobre un contenedor Docker separado de tal forma que el contendor Laravel se conecta al MySQL y hace las peticiones pertinentes. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Para ello como se menciona anteriormente se levanta un contedor Laravel con MySQL con uso de Docker de la siguiente manera:
+    Instalación de Docker.
+        -"sudo apt install docker-compose"
+    Instalación de Laravel con MySQL server en un contenedor Docker.
+        -"curl -s "https://laravel.build/example-app?with=mysql" | bash" "Donde /example-app será el nombre de la ruta del contenedor MySQL"
+    Levantar contenedor.
+        -"cd example-app && ./vendor/bin/sail up -d"
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+En nuestro caso para acceder hacemos uso de una IP estática 10.5.7.206, de esta manera podemos conectarnos desde nuestra máquina anfitriona con Visual Studio Code conectándonos al contenedor en sí.
 
 ## Learning Laravel
 
@@ -28,26 +26,6 @@ Laravel has the most extensive and thorough [documentation](https://laravel.com/
 You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
 
 ## Contributing
 
