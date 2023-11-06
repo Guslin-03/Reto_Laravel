@@ -8,8 +8,8 @@
                     Creación de comentario
                 @endif
             </div>
-            <div>
-                <form class="mt-2" name="priority_form"
+            <div class="container">
+                <form name="priority_form"
                     @if(isset($comment))
                         action="{{ route('comments.update', $comment) }}"
                     @else
@@ -32,23 +32,23 @@
                     </div>
                     <input type="hidden" id="issue_id" name="issue_id" value="{{ $issue->id }}" />
                     @if(!isset($comment))
-                    <div class="form-group mb-3">
-                        <button type="submit" class="btn btn-success">
-                            Crear
-                        </button>
+                        <div class="form-group mb-3">
+                            <button type="submit" class="btn btn-success">
+                                Crear
+                            </button>
                         </div>
                     @endif
                     @if(isset($comment))
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary d-inline">
                                 Actualizar
                         </button>
                     @endif
                 </form>
                 @if(isset($comment))
-                    <form action="{{route('comments.destroy',$comment)}}" method="POST">
+                    <form action="{{route('comments.destroy',$comment)}}" method="POST" class="mt-2">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger" type="submit">Eliminar</button>
+                        <button class="btn btn-danger d-inline" type="submit">Eliminar</button>
                     </form>
                 @endif
             </div>

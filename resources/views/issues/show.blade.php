@@ -6,7 +6,7 @@
             <div class="card-body">
                 <h1 class="card-title">{{ $issue->title }}</h1>
                 <p class="card-text">Descripción: {{ $issue->text }}</p>
-                <p class="card-text">{{ $issue->estimated_time }} minutos</p>
+                <p class="card-text">Tiempo estimado: {{ $issue->estimated_time }} minutos</p>
                 <p class="card-text">Departamento propietario: {{ $issue->incidencia_departamento->name }}</p>
                 <p class="card-text">Usuario que reporta la incidencia: {{ $issue->incidencia_usuario->name }}</p>
                 <p class="card-text">Categoría: {{ $issue->incidencia_categoria->name ?? 'Eliminado'}}</p>
