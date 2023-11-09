@@ -26,13 +26,20 @@
                         <input type="text" class="form-control" id="name" name="name" required
                                value="{{ isset($priority) ? $priority->name : '' }}"/>
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        @if(isset($priority))
+                    <div class="form-group mb-3">
+                        <label for="priority" class="form-label">Número de prioridad (1 Baja - 5 Alta)</label>
+                        <input type="number" class="form-control" id="priority" name="priority" required
+                        value="{{ isset($priority) ? $priority->priority : '1' }}" min="1" max="5" />
+                    </div>
+                    @if(isset($priority))
+                        <button type="submit" class="btn btn-primary">
                             Actualizar
-                        @else
+                        </button>
+                    @else
+                        <button type="submit" class="btn btn-success">
                             Crear
-                        @endif
-                    </button>
+                        </button>
+                    @endif
                 </form>
             </div>
         </div>

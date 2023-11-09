@@ -16,14 +16,16 @@ return new class extends Migration
             $table->string('text',5000);
             $table->integer('minutesUsed');
             $table->unsignedBigInteger('issue_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
-            
+
             $table->foreign('issue_id')->references('id')->on('issues')->onDelete('cascade');
-            
+            $table->foreign('user_id')->references('id')->on('users');
+
         });
-        
+
     }
-    
+
     /**
     * Reverse the migrations.
     */

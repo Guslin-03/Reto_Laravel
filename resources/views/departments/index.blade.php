@@ -20,12 +20,19 @@
                                 <h5 class="mb-0">{{ $department->name }}</h5>
                                 @auth
                                     @if (($department->departamento_usuarios->isEmpty()))
-                                        <form action="{{route('departments.destroy',$department)}}" method="POST">
+                                        <form id="deleteForm" action="{{route('departments.destroy',$department)}}" method="POST">
                                             @csrf
                                             @method('DELETE')
-                                            <button class="btn btn-danger" type="submit">Eliminar</button>
+                                            <button class="btn btn-danger" type="button" onclick="confirmDelete()">Eliminar</button>
                                             <a href="{{ route('departments.edit', ['department' => $department]) }}" class="btn btn-primary">Editar</a>
                                         </form>
+                                        <script>
+                                            function confirmDelete() {
+                                                if (confirm('¿Estás seguro de que quieres eliminar el departamento?')) {
+                                                    document.getElementById('deleteForm').submit();
+                                                }
+                                            }
+                                        </script>
                                     @else
                                     <a href="{{ route('departments.edit', ['department' => $department]) }}" class="btn btn-primary">Editar</a>
                                     @endif

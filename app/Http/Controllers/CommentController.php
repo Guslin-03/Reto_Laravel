@@ -35,6 +35,7 @@ class CommentController extends Controller
         $comment->text = $request->text;
         $comment->minutesUsed = $request->minutesUsed;
         $comment->issue_id = $issue->id;
+        $comment->user_id = auth()->user()->id;
         $comment->save();
 
         return redirect()->route('issues.show',['issue'=>$issue]);

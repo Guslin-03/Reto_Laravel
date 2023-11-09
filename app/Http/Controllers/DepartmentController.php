@@ -12,7 +12,7 @@ class DepartmentController extends Controller
     * Display a listing of the resource.
     */
     public function index(){
-        $departments = Department::all();
+        $departments = Department::orderBy('name', 'asc')->get();
         $issues = Issue::orderBy('created_at', 'desc')->take(5)->get();
         return view('departments.index',['departments' => $departments],['issues' => $issues]);
     }

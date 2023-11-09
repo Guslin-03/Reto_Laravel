@@ -19,11 +19,11 @@ class IssueController extends Controller
     public function index()
     {
 
-        $issues = Issue::join('priorities', 'issues.priority_id', '=', 'priorities.id')
+        $issues = Issue::leftJoin('priorities', 'issues.priority_id', '=', 'priorities.id')
         ->select('issues.*')
         ->orderBy('priorities.priority', 'desc') // Ordenar por un campo de la tabla priorities
+        ->orderBy('issues.created_at', 'desc')
         ->get();
-
         return view('issues.index',['issues' => $issues]);
     }
 

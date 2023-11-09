@@ -26,13 +26,15 @@
                         <input type="text" class="form-control" id="name" name="name" required
                                value="{{ isset($category) ? $category->name : '' }}"/>
                     </div>
-                    <button type="submit" class="btn btn-primary">
-                        @if(isset($category))
+                    @if(isset($category))
+                        <button type="submit" class="btn btn-primary">
                             Actualizar
-                        @else
+                        </button>
+                    @else
+                        <button type="submit" class="btn btn-success">
                             Crear
-                        @endif
-                    </button>
+                        </button>
+                    @endif
                 </form>
             </div>
         </div>

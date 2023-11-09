@@ -33,6 +33,7 @@ class PriorityController extends Controller
     {
         $priority = new Priority();
         $priority->name = $request->name;
+        $priority->priority = $request->priority;
         $priority->save();
         return redirect()->route('priorities.index');
     }

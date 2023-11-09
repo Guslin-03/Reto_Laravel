@@ -1,6 +1,6 @@
 .active {
     background-color: rgba(0, 123, 255, 0.4);
-    border-radius: 20px;
+    border-radius: 0.375rem;
     color: black;
 }
 .card:nth-child(4n+1) {
@@ -15,14 +15,14 @@ body {
     color: black;
     font-size: 25px;
 }
+form{
+    display: inline;
+}
 .dark-mode {
     background-color: #121212;
     color: white;
 }
-#theme-toggle-img {
-    width: 48px;
-    height: 48px;
-}
+
 .dark-mode .navbar a {
     color: white;
 }
@@ -34,9 +34,7 @@ body {
     border-radius: 20px;
     color: #121212;
 }
-.dark-mode a{
-  color:white
-}
+
 .dark-mode .card-header {
     background-color: #1F1B24;
     color: #fff;
@@ -49,24 +47,37 @@ body {
     background-color: #373040;
     color: #fff;
 }
+.dark-mode a{
+    color:white
+  }
 .dark-mode .navbar .dropdown-menu {
     background-color: #1F1B24;
     color: #fff;
 }
-
-.dark-mode .navbar .dropdown-menu a {
-    color: #fff;
-}
-.dark-mode .theme-toggle-img{
-    background-color: #1F1B24;
-}
 .dark-mode .navbar-nav .nav-item.dropdown .nav-link {
     color: white;
 }
-.dark-mode .navbar .dropdown-menu .dropdown-item:hover {
-    color:  #121212;
+.dark-mode .navbar-nav .nav-item.dropdown .dropdown-item:hover {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+.navbar-nav .nav-item.dropdown .dropdown-item:hover {
+    color: black;
+    background-color: rgba(0, 123, 255, 0.4);
+}
+.dark-mode .form-control{
+    background-color: #373040;
+    color:white
+}
+.dark-mode .form-select{
+    background-color: #373040;
+    color:white
 }
 #theme-toggle-button {
     background-color: transparent;
     border: none;
+}
+#theme-toggle-img {
+    width: 48px;
+    height: 48px;
 }

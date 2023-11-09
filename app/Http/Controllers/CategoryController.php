@@ -13,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::orderBy('name', 'asc')->get();
         $issues = Issue::orderBy('created_at', 'desc')->take(5)->get();
         return view('categories.index',['categories' => $categories],['issues' => $issues]);
     }

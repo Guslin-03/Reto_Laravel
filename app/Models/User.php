@@ -48,4 +48,7 @@ class User extends Authenticatable
     public function usuario_departamento(): BelongsTo {
         return $this->belongsTo(Department::class, 'department_id');
     }
+    public function usuario_comentario(): HasMany {
+        return $this->hasMany(Comment::class);
+    }
 }

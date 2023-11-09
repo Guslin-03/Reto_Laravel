@@ -28,14 +28,15 @@
                     </div>
                     <div class="form-group mb-3">
                         <label for="text" class="form-label">Descripción</label>
-                        <textarea type="textarea" rows="5" class="form-control" id="text" name="text">{{ isset($issue) ? $issue->text : '' }}</textarea>
+                        <textarea type="textarea" rows="4" class="form-control" id="text" name="text">{{ isset($issue) ? $issue->text : '' }}</textarea>
                     </div>
                     <div class="form-group mb-3">
-                        <label for="estimated_time" class="form-label">Tiempo Estimado</label>
-                        <input type="text" class="form-control" id="estimated_time" name="estimated_time" required
-                               value="{{ isset($issue) ? $issue->estimated_time : '' }}"/>
+                        <label for="estimated_time" class="form-label">Tiempo Estimado (minutos)</label>
+                        <input type="number" class="form-control" id="estimated_time" name="estimated_time" required
+                               value="{{ isset($issue) ? $issue->estimated_time : '' }}" min="0"/>
                     </div>
                     <div class="form-group mb-3">
+                        <label for="estimated_time" class="form-label">Estado</label>
                         <select class="form-select" id="status_id" name="status_id" required>
                             @foreach ($statuses as $status)
                             <option value="{{ $status->id }}"
@@ -52,6 +53,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
+                        <label for="estimated_time" class="form-label">Categoría</label>
                         <select class="form-select" id="category_id" name="category_id" required>
                             @foreach ($categories as $category)
                             <option value="{{ $category->id }}"
@@ -68,6 +70,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
+                        <label for="estimated_time" class="form-label">Prioridad</label>
                         <select class="form-select" id="priority_id" name="priority_id" required>
                             @foreach ($priorities as $priority)
                             <option value="{{ $priority->id }}"

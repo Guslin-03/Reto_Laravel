@@ -14,5 +14,8 @@ class Comment extends Model
     public function comentario_incidencia(): BelongsTo {
         return $this->belongsTo(Issue::class, 'issue_id');
     }
+    public function comentario_usuario(): BelongsTo {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 
 }

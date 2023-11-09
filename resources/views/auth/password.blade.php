@@ -19,7 +19,7 @@
                     <div class="alert alert-danger">
                         <ul>
                             @foreach($errors->all() as $error)
-                                <li>{{ $error }}</li>
+                                <li>{{ "La contraseña debe tener al menos 8 carácteres" }}</li>
                             @endforeach
                         </ul>
                     </div>

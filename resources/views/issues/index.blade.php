@@ -16,21 +16,32 @@
                     @foreach ($issues as $issue)
                     <div class="card mb-3">
                         <div class="card-body d-flex justify-content-between align-items-center">
-                            <h5 class="card-title">
-                                <a href="{{ route('issues.show', ['issue' => $issue->id]) }}">
-                                    {{ $issue->title }}
-                                </a>
-                            </h5>
+                            <div>
+                                <h5 class="card-title mb-0" style="display: inline;">
+                                    <a href="{{ route('issues.show', ['issue' => $issue->id]) }}" class="text-decoration-none" style="display: inline;">
+                                        {{ $issue->title }}
+                                    </a>
+                                </h5>
+                                <span class="small text-muted">Creación: {{ $issue->created_at }}</span>
+                            </div>
                             @auth
                             @if($issue->user_id == Auth::user()->id)
-                            <div class="btn-group">
-                                <form action="{{ route('issues.destroy', $issue) }}" method="POST">
+                            <div class="btn-group inline">
+                                <form id="deleteForm" action="{{ route('issues.destroy', $issue) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    <button class="btn btn-danger" type="button" onclick="confirmDelete()">Eliminar</button>
+                                    <a href="{{ route('issues.edit', ['issue' => $issue]) }}" class="btn btn-primary">Editar</a>
                                 </form>
-                                <a href="{{ route('issues.edit', ['issue' => $issue]) }}" class="btn btn-primary">Editar</a>
                             </div>
+
+                            <script>
+                                function confirmDelete() {
+                                    if (confirm('¿Estás seguro de que quieres eliminar la incidencia?')) {
+                                        document.getElementById('deleteForm').submit();
+                                    }
+                                }
+                            </script>
                             @endif
                             @endauth
                         </div>

@@ -19,6 +19,8 @@ Para ello como se menciona anteriormente se levanta un contedor Laravel con MySQ
 
 En nuestro caso para acceder hacemos uso de una IP estática 10.5.7.206, de esta manera podemos conectarnos desde nuestra máquina anfitriona con Visual Studio Code conectándonos al contenedor en sí.
 
+Una vez dentro del contenedor para aplicar el CSS se deberá ejecutar el comando "npm run dev"
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.

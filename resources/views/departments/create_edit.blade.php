@@ -34,15 +34,17 @@
                         </div>
                         <div class="form-group mb-3">
                             <label for="description" class="form-label">Descripción</label>
-                            <textarea rows="7" class="form-control" id="description" name="description" required>{{ isset($department) ? $department->description : '' }}</textarea>
+                            <textarea rows="4" class="form-control" id="description" name="description" required>{{ isset($department) ? $department->description : '' }}</textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">
-                            @if(isset($department))
+                        @if(isset($department))
+                            <button type="submit" class="btn btn-primary">
                                 Actualizar
-                            @else
+                            </button>
+                        @else
+                            <button type="submit" class="btn btn-success">
                                 Crear
-                            @endif
-                        </button>
+                            </button>
+                        @endif
                     </form>
                 </div>
             </div>

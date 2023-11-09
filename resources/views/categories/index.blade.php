@@ -20,12 +20,19 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <h5 class="mb-0">{{ $category->name }}</h5>
                                 @auth
-                                <form action="{{ route('categories.destroy', $category) }}" method="POST">
+                                <form id="deleteForm" action="{{ route('categories.destroy', $category) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button class="btn btn-danger" type="submit">Eliminar</button>
-                                <a href="{{ route('categories.edit', ['category' => $category]) }}" class="btn btn-primary">Editar</a>
+                                    <button class="btn btn-danger" type="button" onclick="confirmDelete()">Eliminar </button>
+                                    <a href="{{ route('categories.edit', ['category' => $category]) }}" class="btn btn-primary">Editar</a>
                                 </form>
+                                <script>
+                                    function confirmDelete() {
+                                        if (confirm('¿Estás seguro de que quieres eliminar la categoría?')) {
+                                            document.getElementById('deleteForm').submit();
+                                        }
+                                    }
+                                </script>
                                 @endauth
                             </div>
                         </div>
