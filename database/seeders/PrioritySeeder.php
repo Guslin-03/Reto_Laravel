@@ -16,9 +16,11 @@ class PrioritySeeder extends Seeder
     public function run()
     {
         $priorities=[
-         ["name"=>"Alta","priority"=>5],
+         ["name"=>"Muy Alta","priority"=>5],
+         ["name"=>"Alta","priority"=>4],
          ["name"=>"Media","priority"=>3],
-         ["name"=>"Baja","priority"=>1]
+         ["name"=>"Baja","priority"=>2],
+         ["name"=>"Muy Baja","priority"=>1]
         ];
         foreach ($priorities as $priority) {
             $this->attemptInsertion($priority);

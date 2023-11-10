@@ -19,7 +19,11 @@ Para ello como se menciona anteriormente se levanta un contedor Laravel con MySQ
 
 En nuestro caso para acceder hacemos uso de una IP estática 10.5.7.206, de esta manera podemos conectarnos desde nuestra máquina anfitriona con Visual Studio Code conectándonos al contenedor en sí.
 
-Una vez dentro del contenedor para aplicar el CSS se deberá ejecutar el comando "npm run dev"
+Una vez dentro del contenedor:
+
+Ejecutar todos los Migrations "php artisan migrate"
+Ejecutar todos los seeders "php artisan db:seed"
+Para aplicar el CSS se deberá ejecutar el comando "npm run build"
 
 ## Learning Laravel
 

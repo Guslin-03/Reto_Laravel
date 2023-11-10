@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Ibermaniáticos'),
 
     /*
     |--------------------------------------------------------------------------
@@ -186,6 +186,6 @@ return [
         'InfoCard' => App\View\Components\InfoCard::class,
     ])->toArray(),
 
-    
+
 
 ];

@@ -50,13 +50,20 @@
                         </button>
                     @endif
                 </form>
-                @if(isset($comment) && auth()->user()->id == $comment->issue_id)
-                    <form action="{{route('comments.destroy',$comment)}}" method="POST" class="mt-2">
+                @if(isset($comment) && auth()->user()->id == $comment->user_id)
+                    <form id="deleteForm" action="{{route('comments.destroy',$comment)}}" method="POST" class="mt-2">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger d-inline" type="submit">Eliminar</button>
+                        <button class="btn btn-danger" type="button" onclick="confirmDelete()">Eliminar</button>
                     </form>
                 @endif
+                <script>
+                    function confirmDelete() {
+                        if (confirm('¿Estás seguro de que quieres eliminar el comentario?')) {
+                            document.getElementById('deleteForm').submit();
+                        }
+                    }
+                </script>
             </div>
         </div>
     </div>

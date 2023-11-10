@@ -14,9 +14,11 @@ class StatusSeeder extends Seeder
     public function run(): void
     {
         $statuses=[
-            ["name"=>"En proceso"],  
+            ["name"=>"En proceso"],
             ["name"=>"Bloqueado"],
-            ["name"=>"Finalizada"]
+            ["name"=>"Finalizada"],
+            ["name"=>"Reabierto"],
+            ["name"=>"Revisión"]
            ];
            foreach ($statuses as $status) {
                $this->attemptInsertion($status);
@@ -31,8 +33,8 @@ class StatusSeeder extends Seeder
      **/
     private function attemptInsertion(array $status):void
     {
-       
+
         DB::table('statuses')->insert($status);
-       
+
     }
 }

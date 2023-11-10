@@ -14,14 +14,20 @@ class UserSeeder extends Seeder{
      */
     public function run(): void{
         $users=[
-            ["name"=>"David", "email"=>"david@ventas.com", 
-            "password"=> Hash::make("12341234") , "department_id"=>"1" ,
-            "created_at"=>now(),"updated_at"=>now()],  
-            ["name"=>"Joana", "email"=>"joana@rrhh.com", 
-            "password"=>Hash::make("12341234") , "department_id"=>"2" ,
+            ["name"=>"David", "email"=>"david@ventas.com",
+            "password"=> Hash::make("12341234"), "department_id"=>"1",
             "created_at"=>now(),"updated_at"=>now()],
-            ["name"=>"Elon Musk", "email"=>"elon@it.com", 
-            "password"=>Hash::make("12341234") , "department_id"=>"3" ,
+            ["name"=>"Joana", "email"=>"joana@rrhh.com",
+            "password"=>Hash::make("12341234"), "department_id"=>"2",
+            "created_at"=>now(),"updated_at"=>now()],
+            ["name"=>"Elon Musk", "email"=>"elon@it.com",
+            "password"=>Hash::make("12341234"), "department_id"=>"3",
+            "created_at"=>now(),"updated_at"=>now()],
+            ["name"=>"Amancio", "email"=>"amancio@legal.com",
+            "password"=>Hash::make("12341234") , "department_id"=>"4",
+            "created_at"=>now(),"updated_at"=>now()],
+            ["name"=>"Pascasio", "email"=>"pascasio@id.com",
+            "password"=>Hash::make("12341234"), "department_id"=>"5",
             "created_at"=>now(),"updated_at"=>now()]
            ];
            foreach ($users as $user) {
@@ -36,8 +42,8 @@ class UserSeeder extends Seeder{
      **/
     private function attemptInsertion(array $user):void
     {
-       
+
         DB::table('users')->insert($user);
-       
+
     }
 }

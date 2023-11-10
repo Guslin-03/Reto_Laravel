@@ -16,9 +16,11 @@ class CategorySeeder extends Seeder
     public function run()
     {
         $categories=[
-         ["name"=>"Problemas de hardware"],  
+         ["name"=>"Problemas de hardware"],
          ["name"=>"Solicitud de permisos"],
-         ["name"=>"Reestablecimiento de contraseña"]
+         ["name"=>"Reestablecimiento de contraseña"],
+         ["name"=>"Copias de seguridad"],
+         ["name"=>"Integración y conectividad"]
         ];
         foreach ($categories as $category) {
             $this->attemptInsertion($category);
@@ -33,5 +35,5 @@ class CategorySeeder extends Seeder
     private function attemptInsertion(array $category):void
     {
         DB::table('categories')->insert($category);
-    }    
+    }
 }

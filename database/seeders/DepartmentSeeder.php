@@ -25,6 +25,12 @@ class DepartmentSeeder extends Seeder
          "created_at"=>now(),"updated_at"=>now()],
          ["name"=>"IT", "headquarters"=>"Madrid",
          "description"=>"El departamento de IT se encarga de gestionar y mantener la tecnología de una empresa. Esto incluye hardware, software, redes y seguridad. Su objetivo es asegurar que la tecnología respalde las operaciones comerciales de manera eficiente y segura." ,
+         "created_at"=>now(), "updated_at"=>now()],
+         ["name"=>"Legal y Cumplimiento", "headquarters"=>"Bilbao",
+         "description"=>"Asegura que la empresa cumpla con las leyes y regulaciones, gestiona contratos, asesora en cuestiones legales y aborda temas de cumplimiento normativo.",
+         "created_at"=>now(),"updated_at"=>now()],
+         ["name"=>"I+D", "headquarters"=>"Madrid",
+         "description"=>"Se enfoca en la investigación y desarrollo de nuevos productos, servicios o procesos para mantener a la empresa innovadora en su industria." ,
          "created_at"=>now(), "updated_at"=>now()]
         ];
         foreach ($departments as $department) {
