@@ -2,10 +2,8 @@
 @section('content')
 <div class="container">
     <div class="card">
-        <div class="card-header">Incidencia</div>
+        <div class="card-header"> <h4 class="card-title">{{ $issue->title }}</h4></div>
             <div class="card-body">
-                <h2 class="card-title">{{ $issue->title }}</h2>
-                <p class="card-text"></p>
                 <p class="card-text">Descripción: {{ $issue->text }}</p>
                 <p class="card-text">Tiempo estimado: {{ $issue->estimated_time }} minutos</p>
                 <p class="card-text">Departamento propietario: {{ $issue->incidencia_departamento->name }}</p>

@@ -2,11 +2,13 @@
     <div class="card">
         <div class="card-body">
             <div class="card-header">
-                @if(isset($comment))
-                    Comentario
-                @else
-                    Creación de comentario
-                @endif
+                <h4>
+                    @if(isset($comment))
+                        Comentario
+                    @else
+                        Creación de comentario
+                    @endif
+                </h4>
             </div>
             <div class="container">
                 <form name="priority_form"
