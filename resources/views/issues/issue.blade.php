@@ -79,7 +79,7 @@
                 <a href="{{ route('issues.show', ['issue' => $issue->id]) }}">
                     {{ $issue->title }}
                 </a>
-                <span class="small text-muted">Creación: {{ $issue->created_at }}</span>
+                <span id="creacion">Creación: {{ $issue->created_at }}</span>
             </li>
             @endif
         @endforeach

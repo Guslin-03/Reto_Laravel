@@ -22,7 +22,7 @@
                                         {{ $issue->title }}
                                     </a>
                                 </h5>
-                                <span class="small text-muted">Creación: {{ $issue->created_at }}</span>
+                                <span id="creacion">Creación: {{ $issue->created_at }}</span>
                             </div>
                             @auth
                             @if($issue->user_id == Auth::user()->id)
