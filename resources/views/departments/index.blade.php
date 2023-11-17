@@ -17,7 +17,11 @@
                     <div class="card mb-3">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center">
-                                <h5 class="mb-0">{{ $department->name }}</h5>
+                                <h5 class="card-title mb-0" style="display: inline;">
+                                    <a href="{{ route('departments.show', ['department' => $department->id]) }}" style="display: inline;">
+                                        {{ $department->name }}
+                                    </a>
+                                </h5>
                                 @auth
                                     @if (($department->departamento_usuarios->isEmpty()))
                                         <form id="deleteForm" action="{{route('departments.destroy',$department)}}" method="POST">

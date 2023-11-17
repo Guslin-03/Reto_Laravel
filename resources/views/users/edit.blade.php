@@ -5,7 +5,7 @@
         <div class="card-header">Edición de usuario</div>
         <div class="card-body">
         <form class="mt-2" name="create_platform"
-                action="{{route('priorities.update',$user)}}" method="POST" enctype="multipart/form-data">
+                action="{{route('users.update',$user)}}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="form-group mb-3">
@@ -18,7 +18,7 @@
                 <input type="text" class="form-control" id="email" name="email" required
                 value="{{$user->email}}"/>
             </div>
-            
+
             <button type="submit" class="btn btn-primary" name="">Actualizar</button>
         </form>
     </div>

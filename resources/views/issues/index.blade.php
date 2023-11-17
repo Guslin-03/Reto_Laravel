@@ -18,7 +18,7 @@
                         <div class="card-body d-flex justify-content-between align-items-center">
                             <div>
                                 <h5 class="card-title mb-0" style="display: inline;">
-                                    <a href="{{ route('issues.show', ['issue' => $issue->id]) }}" class="text-decoration-none" style="display: inline;">
+                                    <a href="{{ route('issues.show', ['issue' => $issue->id]) }}" style="display: inline;">
                                         {{ $issue->title }}
                                     </a>
                                 </h5>

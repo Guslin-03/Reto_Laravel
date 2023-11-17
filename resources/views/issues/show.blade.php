@@ -4,7 +4,8 @@
     <div class="card">
         <div class="card-header">Incidencia</div>
             <div class="card-body">
-                <h1 class="card-title">{{ $issue->title }}</h1>
+                <h2 class="card-title">{{ $issue->title }}</h2>
+                <p class="card-text"></p>
                 <p class="card-text">Descripción: {{ $issue->text }}</p>
                 <p class="card-text">Tiempo estimado: {{ $issue->estimated_time }} minutos</p>
                 <p class="card-text">Departamento propietario: {{ $issue->incidencia_departamento->name }}</p>
